@@ -49,13 +49,7 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
         cardsContainer.appendChild(create);
     });
     
-    console.log(bootstrap);
-    console.log(results.data.articles);
-    
-   
 });
-
-
 
 function CreateArticles(obj) {
     //create the elements
