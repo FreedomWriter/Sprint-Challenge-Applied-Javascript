@@ -10,14 +10,60 @@
 
 const topics = document.querySelector('.topics');
 
+
 //get the data
 axios.get('https://lambda-times-backend.herokuapp.com/topics')
     .then((results) => {
         let data = results.data.topics;
+
         data.forEach((item) => {
+            
+
             const tabs = Tabs(item);
             topics.appendChild(tabs);
+
+            tabs.addEventListener('click', (e) => {
+                if (tabs.textContent === 'javascript') {
+                   document.querySelectorAll('.card').forEach((e) => {
+                        e.style.display = 'none';
+                        document.querySelectorAll('.javascript').forEach((e) => {
+                            e.style.display = 'flex';
+                        });   
+                   });
+                } else if (tabs.textContent === 'bootstrap') {
+                    document.querySelectorAll('.card').forEach((e) => {
+                         e.style.display = 'none';
+                         document.querySelectorAll('.bootstrap').forEach((e) => {
+                             e.style.display = 'flex';
+                         });   
+                    });
+                 } else if (tabs.textContent === 'jquery') {
+                    document.querySelectorAll('.card').forEach((e) => {
+                         e.style.display = 'none';
+                         document.querySelectorAll('.jquery').forEach((e) => {
+                             e.style.display = 'flex';
+                         });   
+                    });
+                 } else if (tabs.textContent === 'node.js') {
+                    document.querySelectorAll('.card').forEach((e) => {
+                         e.style.display = 'none';
+                         document.querySelectorAll('.node').forEach((e) => {
+                             e.style.display = 'flex';
+                         });   
+                    });
+                 } else if (tabs.textContent === 'technology') {
+                    document.querySelectorAll('.card').forEach((e) => {
+                         e.style.display = 'none';
+                         document.querySelectorAll('.technology').forEach((e) => {
+                             e.style.display = 'flex';
+                         });   
+                    });
+                 }  
+                
+                // console.log(document.querySelector('.bootstrap'));
+            })
         });
+        
     });
 
 //create the component function
@@ -30,3 +76,4 @@ function Tabs (topic) {
     tab.classList.add('tab');
     return tab;
 }
+
