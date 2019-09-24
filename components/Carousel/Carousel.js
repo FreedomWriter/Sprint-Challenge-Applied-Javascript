@@ -56,22 +56,24 @@ function CreateCarousel() {
   // console.log(mountains);
   mountains.style.display = 'flex';
     rightBttn.addEventListener('click', () => {
-      let i;
-      for (i=0; i< picArr.length; i++) {
+      
+      for (let i=0; i< picArr.length; i++) {
         if (picArr[i].style.display === 'flex' && i !== 3) {
           picArr[i].style.display = 'none';
-          console.log(picArr[i++]);
+          picArr[i++];
           picArr[i++].style.display = 'flex';
         } 
       }
   });
   leftBttn.addEventListener('click', () => {
-    let i;
-    for (i=0; i< picArr.length; i++) {
+    
+    for (let i=0; i< picArr.length; i++) {
       if (picArr[i].style.display === 'flex' && i !== 0) {
         picArr[i].style.display = 'none';
-        console.log(picArr[i--]);
-        return picArr[i--].style.display = 'flex';
+        picArr[i--];
+        picArr[i--].style.display = 'flex';
+        break;
+        
       } 
     }
 });
