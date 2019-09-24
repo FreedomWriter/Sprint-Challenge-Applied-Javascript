@@ -40,6 +40,8 @@ function CreateCarousel() {
   carousel.classList.add('carousel');
   leftBttn.classList.add('left-button');
   rightBttn.classList.add('right-button');
+  leftBttn.textContent = '<';
+  rightBttn.textContent = '>'
 
   //create the structure
   carousel.appendChild(leftBttn);
@@ -51,19 +53,30 @@ function CreateCarousel() {
 
   //create an array containing img variable names
   const picArr = [mountains, computer, trees, turntable,];
+  // console.log(mountains);
   mountains.style.display = 'flex';
-  picArr.forEach(() => {
     rightBttn.addEventListener('click', () => {
-    if (mountains.style.display = 'flex') {
-      mountains.style.display = 'none';
-      computer.style.display = 'flex';
-    } else if (computer.style.display ='flex') {
-      computer.style.display = 'none';
-      trees.style.display = 'flex';
+      let i;
+      for (i=0; i< picArr.length; i++) {
+        if (picArr[i].style.display === 'flex' && i !== 3) {
+          picArr[i].style.display = 'none';
+          console.log(picArr[i++]);
+          picArr[i++].style.display = 'flex';
+        } 
+      }
+  });
+  leftBttn.addEventListener('click', () => {
+    let i;
+    for (i=0; i< picArr.length; i++) {
+      if (picArr[i].style.display === 'flex' && i !== 0) {
+        picArr[i].style.display = 'none';
+        console.log(picArr[i--]);
+        return picArr[i--].style.display = 'flex';
+      } 
     }
-  });
+});
     
-  });
+  
 
   return carousel;  
 }
