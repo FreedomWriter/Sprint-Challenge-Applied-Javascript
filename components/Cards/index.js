@@ -17,3 +17,71 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
+
+const cardsContainer = document.querySelector('.cards-container');
+
+axios.get('https://lambda-times-backend.herokuapp.com/articles')
+
+  .then((results) => {
+    const bootstrap = results.data.articles.bootstrap;
+    const javascript = results.data.articles.javascript;
+    const jquery = results.data.articles.jquery;
+    const node = results.data.articles.node;
+    const technology = results.data.articles.technology;
+    bootstrap.forEach((obj) => {
+        const create = CreateArticles(obj);
+        create.classList.add('bootstrap');
+        cardsContainer.appendChild(create);
+    });
+    javascript.forEach((obj) => {
+        const create = CreateArticles(obj);
+        create.classList.add('javascript');
+        cardsContainer.appendChild(create);
+    });
+    jquery.forEach((obj) => {
+        const create = CreateArticles(obj);
+        create.classList.add('jquery');
+        cardsContainer.appendChild(create);
+    });
+    node.forEach((obj) => {
+        const create = CreateArticles(obj);
+        create.classList.add('node');
+        cardsContainer.appendChild(create);
+    });
+    technology.forEach((obj) => {
+        const create = CreateArticles(obj);
+        create.classList.add('technology');
+        cardsContainer.appendChild(create);
+    });
+    
+});
+
+function CreateArticles(obj) {
+    //create the elements
+    const card = document.createElement('div');
+    const hLine = document.createElement('div');
+    const author = document.createElement('div');
+    const imgContainer = document.createElement('div');
+    const img = document.createElement('img');
+    const by = document.createElement('span');
+
+    //set the content
+    hLine.textContent = obj.headline;
+    img.src = obj.authorPhoto;
+    by.textContent = obj.authorName;
+
+    //create the structure
+    card.appendChild(hLine);
+    card.appendChild(author);
+    author.appendChild(imgContainer);
+    imgContainer.appendChild(img);
+    author.appendChild(by);
+
+    //apply the styles
+    card.classList.add('card');
+    hLine.classList.add('headline');
+    author.classList.add('author');
+    imgContainer.classList.add('img-container');
+
+    return card;
+}
